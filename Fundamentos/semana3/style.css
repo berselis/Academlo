@@ -1,0 +1,40 @@
+.parrent-box{
+    width: 500px;
+    height: 500px;
+    border-width: 1px;
+    border-style: dashed;
+    border-color: #404040;
+    display: grid;
+    grid-template-columns: auto  auto;
+}
+
+.parrent-box > div{
+    padding: 10px;
+}
+
+.box-one{
+    background-image: url(visualStudio.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.box-two{
+    background-color: red;
+}
+.box-three{
+    background-color:salmon;
+}
+.box-four{
+    background-color:green;
+}
+
+.box-one,
+.box-two{
+    border-top: solid 10px gray;
+    border-bottom: solid 10px gray;
+}
+
+.box-three,
+.box-four{
+    border-left: solid 10px cyan;
+    border-right: solid 10px cyan;
+}

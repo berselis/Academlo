@@ -110,26 +110,26 @@ function countStudents(students, countries, countryName) {
 /////////////////////////////////////////////////////////////////////////////
 //11
 
-// const students = [
-//     { name: 'Daniela', age: 25 },
-//     { name: 'Camila', age: 23 },
-//     { name: 'Andrea', age: 23 },
-//     { name: 'José', age: 27 },
-//     { name: 'Yennifer', age: 25 },
-//     { name: 'Georg', age: 23 },
-//     { name: 'Berselis', age: 35 },
-//     { name: 'Gabriel', age: 37 },
-//     { name: 'Diego', age: 35 },
-//     { name: 'Mayrena', age: 27 },
-//     { name: 'Ayelizabeth', age: 23 },
-//     { name: 'Bailys', age: 23 },
-//     { name: 'Esthela', age: 38 },
-//     { name: 'Yeimi', age: 38 },
-//     { name: 'Patricia', age: 38 },
-//     { name: 'Leandro', age: 38 }
-// ];
+const students = [
+    { name: 'Daniela', age: 25 },
+    { name: 'Camila', age: 23 },
+    { name: 'Andrea', age: 23 },
+    { name: 'José', age: 27 },
+    { name: 'Yennifer', age: 25 },
+    { name: 'Georg', age: 23 },
+    { name: 'Berselis', age: 35 },
+    { name: 'Gabriel', age: 37 },
+    { name: 'Diego', age: 35 },
+    { name: 'Mayrena', age: 27 },
+    { name: 'Ayelizabeth', age: 23 },
+    { name: 'Bailys', age: 27 },
+    { name: 'Esthela', age: 38 },
+    { name: 'Yeimi', age: 38 },
+    { name: 'Patricia', age: 33 },
+    { name: 'Leandro', age: 38 }
+];
 
-//findMostCommonAge(students);
+
 
 function findMostCommonAge(students) {
     // escribe tu solución aquí
@@ -137,11 +137,15 @@ function findMostCommonAge(students) {
     // por ejemplo en el siguiente ejemplo tendrías el resultado en la variable mostCommonAge
     // return mostCommonAge;
     const ages = students.map(item => item.age);
-    
+    console.log(ages);
+
     const objAges = ages.reduce((key, i) => {
         key[i] = (key[i] || 0) + 1;
         return key;
     }, new Object);
+
+
+    console.log(objAges);
 
     const most = Object.keys(objAges).reduce((first, next) => {
         return objAges[first] > objAges[next] ? first : next;
@@ -261,7 +265,6 @@ function getMultiples(number, limit) {
         if (result >= limit) break;
         multiples.push(result);
     }
-
     console.log(multiples);
 
 }
@@ -282,66 +285,50 @@ function countLetter(phrase, letter) {
     return phrase.match(reg).length;
 }
 
-
-
 //console.log(countLetter('Hola, me llmo Erika', 'a'));
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////
 //17
 
-const students = [
-    { name: 'Andrea', email: 'andrea@gmail.com', channel: 'youtube', application: null },
-    { name: 'Daniela', email: 'daniela@gmail.com', channel: 'youtube', application: { country: 'Colombia', state: 'Bogotá' } },
-    { name: 'Alondra', email: 'alondra@gmail.com', channel: 'twitter', application: { country: 'Colombia', state: 'Bogotá' } },
-    { name: 'Luis', email: 'luisa@gmail.com', channel: 'twitter', application: { country: 'México', state: 'Nuevo León' } },
-    { name: 'Berselis', email: 'berselis@gmail.com', channel: 'youtube', application: { country: 'Rep. Dom', state: 'San Pedro de Macorís' } },
-    { name: 'Alejandro', email: 'alejandro@gmail.com', channel: 'twitter', application: null },
+// const studentss = [
+//     { name: 'Andrea', email: 'andrea@gmail.com', channel: 'youtube', application: null },
+//     { name: 'Daniela', email: 'daniela@gmail.com', channel: 'youtube', application: { country: 'Colombia', state: 'Bogotá' } },
+//     { name: 'Alondra', email: 'alondra@gmail.com', channel: 'twitter', application: { country: 'Colombia', state: 'Bogotá' } },
+//     { name: 'Luis', email: 'luisa@gmail.com', channel: 'twitter', application: { country: 'México', state: 'Nuevo León' } },
+//     { name: 'Berselis', email: 'berselis@gmail.com', channel: 'youtube', application: { country: 'Rep. Dom', state: 'San Pedro de Macorís' } },
+//     { name: 'Alejandro', email: 'alejandro@gmail.com', channel: 'twitter', application: null },
+//     { name: 'Carol', email: 'carol@gmail.com', channel: 'twitter', application: { country: 'Perú', state: 'Lima' } },
 
-];
-
-
+// ];
 
 function countApplicationsByChannel(students) {
     // escribe tu solución aquí
     // Recuerda que en esta prueba debes "retornar" el resultado
     // por ejemplo en el siguiente ejemplo tendrías el resultado en la variable applications
     // return applications;
-    students = students.filter(obj => obj.application !== null);
-
-    const channels = students.map(obj => {
-
-        const objKeys = Object.keys(obj);
-       
-
-        
-        return objKeys;
-
-
+    const applications = students.filter((obj) => {
+        if (obj.application !== null) return obj;
     });
-
-  
-
-
-
-    const applications = students.reduce((obj) => {
-        obj['channel'] = (obj['channel'] || 0) + 1;
-        return obj;
+    const channels = applications.reduce((element, next) => {
+        element[next.channel] = (element[next.channel] || 0) + 1;
+        return element;
     }, new Object);
-
-    //console.log(applications);
-
-
-
-
-
-
-
+    return channels;
 }
 
+// console.log(countApplicationsByChannel(studentss));
 
+/////////////////////////////////////////////////////////////////////////////
+//18
 
+function countNumbers(number) {
+    // escribe tu solución aquí
+    // Recuerda que en esta prueba debes "retornar" el resultado
+    // por ejemplo en el siguiente ejemplo tendrías el resultado en la variable total
+    // return total;
+    return number.toString().length;
+}
 
-countApplicationsByChannel(students);
+//console.log(countNumbers(82));
+
